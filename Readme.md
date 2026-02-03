@@ -1,5 +1,22 @@
 # Anthropic's Original Performance Take-Home
 
+**Fork Summary**
+- This is an **educational** fork of the original take-home repo with added solution iterations; the best solution achieves `2262` cycles.
+- The solutions intentionally minimize `diff` with the original, for ease of use / follow.
+- Solutions are explained in the accompanying blog post: [**Anthropic take-home for dummies**](https://www.ikot.blog/anthropic-take-home-for-dummies).
+- Author: Igor Kotenkov ([X / Twitter](https://x.com/stalkermustang) • [LinkedIn](https://www.linkedin.com/in/seeall/) • [Blog](https://www.ikot.blog/)).
+
+Results from running `python perf_takehome.py Tests.test_kernel_cycles` and the iteration scripts (`python perf_takehome_v2_simd.py Tests.test_kernel_cycles`, `python perf_takehome_v3_mem.py Tests.test_kernel_cycles`, `python perf_takehome_v4_vliw.py Tests.test_kernel_cycles`):
+
+| Iteration | Script | Cycles | Speedup vs baseline |
+| --- | --- | --- | --- |
+| Baseline (original) | `perf_takehome.py` | 147,734 | 1.00x |
+| V2 (SIMD) | `perf_takehome_v2_simd.py` | 22,094 | 6.69x |
+| V3 (Mem) | `perf_takehome_v3_mem.py` | 18,254 | 8.09x |
+| V4 (VLIW) | `perf_takehome_v4_vliw.py` | 2,262 | 65.31x |
+
+---
+
 This repo contains a version of Anthropic's original performance take-home, before Claude Opus 4.5 started doing better than humans given only 2 hours.
 
 The original take-home was a 4-hour one that starts close to the contents of this repo, after Claude Opus 4 beat most humans at that, it was updated to a 2-hour one which started with code which achieved 18532 cycles (7.97x faster than this repo starts you). This repo is based on the newer take-home which has a few more instructions and comes with better debugging tools, but has the starter code reverted to the slowest baseline. After Claude Opus 4.5 we started using a different base for our time-limited take-homes.
